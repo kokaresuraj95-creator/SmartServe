@@ -3,222 +3,260 @@ import "./App.css";
 const services = [
   {
     icon: "⚡",
-    title: "Instant Support",
-    text: "Connect customers with the right service in seconds.",
+    title: "Fast Service",
+    text: "Deliver faster and manage every service request from one place.",
   },
   {
-    icon: "🛠️",
-    title: "Smart Services",
-    text: "Discover trusted professionals for everyday problems.",
+    icon: "🧠",
+    title: "Smart Management",
+    text: "Keep your workflow organized with a simple and intelligent interface.",
   },
   {
-    icon: "📍",
-    title: "Nearby Experts",
-    text: "Find available service providers around your location.",
+    icon: "🔒",
+    title: "Secure Platform",
+    text: "Built with security and reliability in mind for modern businesses.",
   },
+];
+
+const stats = [
+  ["10K+", "Requests Managed"],
+  ["99.9%", "Platform Uptime"],
+  ["24/7", "Service Support"],
 ];
 
 function App() {
   return (
     <div className="app">
-      {/* Background */}
-      <div className="background-grid"></div>
-      <div className="glow glow-one"></div>
-      <div className="glow glow-two"></div>
 
-      {/* Floating particles */}
-      <div className="particles">
-        {Array.from({ length: 35 }).map((_, index) => (
-          <span
-            key={index}
-            style={{
-              left: `${(index * 31) % 100}%`,
-              top: `${(index * 47) % 100}%`,
-              animationDelay: `${-(index % 8)}s`,
-              animationDuration: `${4 + (index % 5)}s`,
-            }}
-          />
-        ))}
-      </div>
+      {/* BACKGROUND EFFECTS */}
+      <div className="bg-orb orb-one"></div>
+      <div className="bg-orb orb-two"></div>
+      <div className="grid-bg"></div>
 
-      {/* Navbar */}
-      <header className="navbar">
-        <a href="#" className="logo">
+      {/* NAVBAR */}
+      <nav className="navbar">
+
+        <div className="logo">
           <span className="logo-mark">S</span>
           <span>Smart<span>Serve</span></span>
-        </a>
+        </div>
 
-        <nav className="nav-links">
+        <div className="nav-links">
           <a href="#home">Home</a>
           <a href="#services">Services</a>
-          <a href="#how">How it works</a>
+          <a href="#solutions">Solutions</a>
           <a href="#about">About</a>
-        </nav>
+        </div>
 
         <button className="nav-button">
           Get Started
-          <span>→</span>
         </button>
 
-        <button className="mobile-menu">☰</button>
-      </header>
+      </nav>
 
-      {/* Hero */}
-      <main id="home" className="hero">
-        <section className="hero-content">
-          <div className="badge">
-            <span className="status-dot"></span>
-            THE SMART WAY TO GET THINGS DONE
-          </div>
+      {/* HERO */}
+      <main id="home">
 
-          <h1>
-            Your Problem.
-            <br />
-            <span>Our Solution.</span>
-          </h1>
+        <section className="hero">
 
-          <p className="hero-description">
-            SmartServe connects you with trusted professionals and
-            reliable services — fast, simple, and exactly when you need them.
-          </p>
+          <div className="hero-content">
 
-          <div className="hero-actions">
-            <button className="primary-button">
-              Explore Services
-              <span>↗</span>
-            </button>
-
-            <button className="secondary-button">
-              See How It Works
-              <span>▶</span>
-            </button>
-          </div>
-
-          <div className="hero-stats">
-            <div>
-              <strong>10K+</strong>
-              <span>Users</span>
+            <div className="badge">
+              <span className="status-dot"></span>
+              SMART SERVICE PLATFORM
             </div>
 
-            <div className="stat-line"></div>
+            <h1>
+              Manage services.
+              <br />
+              <span>Serve smarter.</span>
+            </h1>
 
-            <div>
-              <strong>500+</strong>
-              <span>Experts</span>
+            <p className="hero-text">
+              SmartServe helps modern businesses manage requests,
+              services and customer workflows from one powerful platform.
+            </p>
+
+            <div className="hero-actions">
+
+              <button className="primary-btn">
+                Get Started
+                <span>→</span>
+              </button>
+
+              <button className="secondary-btn">
+                Explore Services
+              </button>
+
             </div>
 
-            <div className="stat-line"></div>
+            {/* STATS */}
+            <div className="stats">
 
-            <div>
-              <strong>4.9</strong>
-              <span>Average Rating</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Hero visual */}
-        <section className="hero-visual">
-          <div className="visual-orbit orbit-one"></div>
-          <div className="visual-orbit orbit-two"></div>
-
-          <div className="dashboard-card">
-            <div className="dashboard-top">
-              <div>
-                <span className="small-label">SMARTSERVE</span>
-                <h3>Find a Service</h3>
-              </div>
-
-              <div className="profile-circle">K</div>
-            </div>
-
-            <div className="search-box">
-              <span>⌕</span>
-              <span className="search-text">What do you need help with?</span>
-              <span className="search-icon">→</span>
-            </div>
-
-            <div className="dashboard-label">
-              Popular services
-            </div>
-
-            <div className="service-grid">
-              {services.map((service) => (
-                <div className="service-card" key={service.title}>
-                  <div className="service-icon">{service.icon}</div>
-                  <strong>{service.title}</strong>
-                  <p>{service.text}</p>
+              {stats.map(([number, label]) => (
+                <div className="stat" key={label}>
+                  <strong>{number}</strong>
+                  <span>{label}</span>
                 </div>
               ))}
+
             </div>
 
-            <div className="availability">
-              <span className="live-dot"></span>
+          </div>
 
-              <div>
-                <strong>124 experts online</strong>
-                <small>Ready to help right now</small>
+          {/* HERO VISUAL */}
+          <div className="hero-visual">
+
+            <div className="dashboard-card">
+
+              <div className="dashboard-top">
+                <div>
+                  <span className="small-label">
+                    OVERVIEW
+                  </span>
+
+                  <h3>
+                    Service Activity
+                  </h3>
+                </div>
+
+                <span className="live">
+                  LIVE
+                </span>
               </div>
 
-              <span className="availability-arrow">→</span>
+              <div className="chart">
+
+                <div className="chart-line"></div>
+
+                <div className="chart-point p1"></div>
+                <div className="chart-point p2"></div>
+                <div className="chart-point p3"></div>
+                <div className="chart-point p4"></div>
+                <div className="chart-point p5"></div>
+
+              </div>
+
+              <div className="dashboard-bottom">
+
+                <div>
+                  <span>Total Requests</span>
+                  <strong>2,847</strong>
+                </div>
+
+                <div>
+                  <span>Growth</span>
+                  <strong className="growth">
+                    +24.8%
+                  </strong>
+                </div>
+
+              </div>
+
             </div>
+
+            <div className="floating-card card-one">
+              <span>⚡</span>
+              <div>
+                <strong>Fast</strong>
+                <small>Response time</small>
+              </div>
+            </div>
+
+            <div className="floating-card card-two">
+              <span>✓</span>
+              <div>
+                <strong>98.4%</strong>
+                <small>Success rate</small>
+              </div>
+            </div>
+
           </div>
 
-          {/* Floating notification */}
-          <div className="floating-card notification">
-            <div className="notification-icon">✓</div>
-
-            <div>
-              <strong>Service booked!</strong>
-              <span>Your expert is on the way</span>
-            </div>
-          </div>
-
-          {/* Floating rating */}
-          <div className="floating-card rating">
-            <div className="rating-star">★</div>
-
-            <div>
-              <strong>4.9 / 5</strong>
-              <span>Customer rating</span>
-            </div>
-          </div>
         </section>
+
+        {/* SERVICES */}
+        <section
+          id="services"
+          className="services-section"
+        >
+
+          <div className="section-heading">
+
+            <div className="section-tag">
+              WHAT WE OFFER
+            </div>
+
+            <h2>
+              Everything you need to
+              <span> serve better.</span>
+            </h2>
+
+            <p>
+              Powerful tools designed to simplify your
+              everyday service workflow.
+            </p>
+
+          </div>
+
+          <div className="service-grid">
+
+            {services.map((service, index) => (
+
+              <article
+                className="service-card"
+                key={service.title}
+                style={{
+                  "--delay": `${index * 0.15}s`,
+                }}
+              >
+
+                <div className="service-icon">
+                  {service.icon}
+                </div>
+
+                <span className="card-number">
+                  0{index + 1}
+                </span>
+
+                <h3>
+                  {service.title}
+                </h3>
+
+                <p>
+                  {service.text}
+                </p>
+
+                <button className="learn-more">
+                  Learn more
+                  <span>↗</span>
+                </button>
+
+              </article>
+
+            ))}
+
+          </div>
+
+        </section>
+
       </main>
 
-      {/* Service preview */}
-      <section id="services" className="services-section">
-        <div className="section-heading">
-          <span>SMART SERVICES</span>
-          <h2>Everything you need, <em>in one place.</em></h2>
+      {/* FOOTER */}
+      <footer id="about">
+        <div className="footer-logo">
+          SmartServe
         </div>
 
-        <div className="service-preview">
-          {services.map((service, index) => (
-            <article className="preview-card" key={service.title}>
-              <span className="preview-number">
-                0{index + 1}
-              </span>
+        <p>
+          Built for smarter service management.
+        </p>
 
-              <div className="preview-icon">
-                {service.icon}
-              </div>
-
-              <h3>{service.title}</h3>
-
-              <p>{service.text}</p>
-
-              <button>
-                Explore <span>↗</span>
-              </button>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <footer>
-        <span>SMARTSERVE © 2026</span>
-        <span>Built for a smarter everyday.</span>
+        <span>
+          © 2026 SmartServe
+        </span>
       </footer>
+
     </div>
   );
 }
