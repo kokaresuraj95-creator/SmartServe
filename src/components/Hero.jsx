@@ -2,15 +2,15 @@ function Hero({ stats }) {
   return (
     <section className="hero" id="home">
       <div className="hero-content">
-        <div className="hero-badge">
+        <div className="badge">
           <span className="status-dot" />
           Smart service management platform
         </div>
 
         <h1>
-          Manage every
+          Manage every service
           <br />
-          service <span>smarter.</span>
+          smarter.
         </h1>
 
         <p>
@@ -21,7 +21,6 @@ function Hero({ stats }) {
         <div className="hero-actions">
           <a href="#requests" className="primary-button">
             Create Request
-            <span>→</span>
           </a>
 
           <a href="#services" className="secondary-button">
@@ -29,14 +28,18 @@ function Hero({ stats }) {
           </a>
         </div>
 
-        <div className="hero-stats">
+        <div className="stats">
           {stats.map((stat) => (
-            <div className="stat-item" key={stat.label}>
+            <div className="stat" key={stat.label}>
               <strong>{stat.value}</strong>
               <span>{stat.label}</span>
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="hero-visual">
+        {/* DashboardPreview is now a separate component */}
       </div>
     </section>
   );

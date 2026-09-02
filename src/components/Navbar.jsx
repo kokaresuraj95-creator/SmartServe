@@ -2,8 +2,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <a href="/" className="logo">
-        <span className="logo-mark">S</span>
-        <span className="logo-text">Smart<span>Serve</span></span>
+        SmartServe
       </a>
 
       <div className="nav-links">
@@ -13,10 +12,9 @@ function Navbar() {
         <a href="#about">About</a>
       </div>
 
-      <a href="#requests" className="nav-button">
+      <button className="nav-button">
         Get Started
-        <span>→</span>
-      </a>
+      </button>
     </nav>
   );
 }

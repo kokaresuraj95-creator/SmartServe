@@ -16,11 +16,8 @@ function Requests({
   return (
     <section className="requests-section" id="requests">
       <div className="section-heading">
-        <div>
-          <span className="section-kicker">SERVICE MANAGEMENT</span>
-          <h2>Track every request.</h2>
-        </div>
-
+        <div className="section-eyebrow">SERVICE MANAGEMENT</div>
+        <h2>Track every request.</h2>
         <p>
           Monitor service requests, priorities and progress
           from one centralized workspace.
@@ -30,43 +27,29 @@ function Requests({
       {/* Request statistics */}
       <div className="request-stats">
         <div className="request-stat">
-          <span className="request-stat-icon">◉</span>
-          <div>
-            <strong>{counts.total}</strong>
-            <span>Total Requests</span>
-          </div>
+          <span>Total Requests</span>
+          <strong>{counts.total}</strong>
         </div>
 
         <div className="request-stat">
-          <span className="request-stat-icon">◷</span>
-          <div>
-            <strong>{counts.pending}</strong>
-            <span>Pending</span>
-          </div>
+          <span>Pending</span>
+          <strong>{counts.pending}</strong>
         </div>
 
         <div className="request-stat">
-          <span className="request-stat-icon">↻</span>
-          <div>
-            <strong>{counts.inProgress}</strong>
-            <span>In Progress</span>
-          </div>
+          <span>In Progress</span>
+          <strong>{counts.inProgress}</strong>
         </div>
 
         <div className="request-stat">
-          <span className="request-stat-icon">✓</span>
-          <div>
-            <strong>{counts.resolved}</strong>
-            <span>Resolved</span>
-          </div>
+          <span>Resolved</span>
+          <strong>{counts.resolved}</strong>
         </div>
       </div>
 
       {/* Filters */}
       <div className="request-toolbar">
         <div className="search-box">
-          <span>⌕</span>
-
           <input
             type="text"
             placeholder="Search requests..."
@@ -118,7 +101,7 @@ function Requests({
 
       {/* Result bar */}
       <div className="request-result-bar">
-        <span>
+        <span className="request-result-count">
           Showing <strong>{requests.length}</strong> requests
         </span>
 
@@ -158,40 +141,26 @@ function Requests({
                 </div>
               </div>
 
-              <div className="request-card-content">
-                <span className="request-category">
-                  {request.category}
-                </span>
+              <h3>{request.title}</h3>
 
-                <h3>{request.title}</h3>
+              <p>{request.description}</p>
 
-                <p>{request.description}</p>
-              </div>
-
-              <div className="request-card-footer">
-                <span>{request.time}</span>
-
-                <button type="button">
-                  View Details <span>→</span>
-                </button>
+              <div className="request-card-bottom">
+                <span className="request-time">{request.time}</span>
+                <span>View Details →</span>
               </div>
             </article>
           ))}
         </div>
       ) : (
         <div className="empty-state">
-          <div className="empty-icon">⌕</div>
-
-          <h3>No requests found</h3>
-
-          <p>
-            Try changing your search or filter options.
-          </p>
-
+          <strong>No requests found</strong>
+          <span>Try changing your search or filter options.</span>
           <button
             type="button"
             className="secondary-button"
             onClick={onReset}
+            style={{ marginTop: '16px' }}
           >
             Clear Filters
           </button>
