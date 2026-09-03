@@ -1,20 +1,30 @@
+import { Link, useLocation } from 'react-router-dom';
+
 function Navbar() {
+  const location = useLocation();
+  const isAuthPage = ['/login', '/register'].includes(location.pathname);
+
   return (
     <nav className="navbar">
-      <a href="/" className="logo">
+      <Link to="/" className="logo">
         SmartServe
-      </a>
+      </Link>
 
-      <div className="nav-links">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#requests">Requests</a>
-        <a href="#about">About</a>
-      </div>
+      {!isAuthPage && (
+        <>
+          <div className="nav-links">
+            <Link to="/">Home</Link>
+            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/requests/new">New Request</Link>
+          </div>
 
-      <button className="nav-button">
-        Get Started
-      </button>
+          <div className="nav-actions">
+            <Link to="/login" className="nav-button">
+              Sign In
+            </Link>
+          </div>
+        </>
+      )}
     </nav>
   );
 }
