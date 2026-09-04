@@ -15,8 +15,8 @@ function Requests({
 }) {
   return (
     <section className="requests-section" id="requests">
-      <div className="section-heading">
-        <div className="section-eyebrow">SERVICE MANAGEMENT</div>
+      <div className="section-header" style={{ textAlign: 'left', margin: '0 0 40px' }}>
+        <div className="section-tag">Request Management</div>
         <h2>Track every request.</h2>
         <p>
           Monitor service requests, priorities and progress
@@ -24,54 +24,46 @@ function Requests({
         </p>
       </div>
 
-      {/* Request statistics */}
+      {/* Stats */}
       <div className="request-stats">
         <div className="request-stat">
-          <span>Total Requests</span>
-          <strong>{counts.total}</strong>
+          <span className="label">Total Requests</span>
+          <span className="value">{counts.total}</span>
         </div>
-
         <div className="request-stat">
-          <span>Pending</span>
-          <strong>{counts.pending}</strong>
+          <span className="label">Pending</span>
+          <span className="value">{counts.pending}</span>
         </div>
-
         <div className="request-stat">
-          <span>In Progress</span>
-          <strong>{counts.inProgress}</strong>
+          <span className="label">In Progress</span>
+          <span className="value">{counts.inProgress}</span>
         </div>
-
         <div className="request-stat">
-          <span>Resolved</span>
-          <strong>{counts.resolved}</strong>
+          <span className="label">Resolved</span>
+          <span className="value">{counts.resolved}</span>
         </div>
       </div>
 
-      {/* Filters */}
+      {/* Toolbar */}
       <div className="request-toolbar">
         <div className="search-box">
+          <span className="icon">⌕</span>
           <input
             type="text"
             placeholder="Search requests..."
             value={search}
-            onChange={(event) => setSearch(event.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
 
-        <select
-          value={status}
-          onChange={(event) => setStatus(event.target.value)}
-        >
+        <select value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="All">All Status</option>
           <option value="Pending">Pending</option>
           <option value="In Progress">In Progress</option>
           <option value="Resolved">Resolved</option>
         </select>
 
-        <select
-          value={category}
-          onChange={(event) => setCategory(event.target.value)}
-        >
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="All">All Categories</option>
           <option value="Technical">Technical</option>
           <option value="Equipment">Equipment</option>
@@ -80,88 +72,62 @@ function Requests({
           <option value="Maintenance">Maintenance</option>
         </select>
 
-        <select
-          value={priority}
-          onChange={(event) => setPriority(event.target.value)}
-        >
+        <select value={priority} onChange={(e) => setPriority(e.target.value)}>
           <option value="All">All Priority</option>
           <option value="High">High</option>
           <option value="Medium">Medium</option>
           <option value="Low">Low</option>
         </select>
 
-        <select
-          value={sort}
-          onChange={(event) => setSort(event.target.value)}
-        >
+        <select value={sort} onChange={(e) => setSort(e.target.value)}>
           <option value="newest">Newest</option>
           <option value="priority">Priority</option>
         </select>
       </div>
 
-      {/* Result bar */}
+      {/* Result Bar */}
       <div className="request-result-bar">
-        <span className="request-result-count">
+        <span className="request-count">
           Showing <strong>{requests.length}</strong> requests
         </span>
-
-        <button
-          type="button"
-          className="reset-button"
-          onClick={onReset}
-        >
+        <button className="reset-btn" onClick={onReset}>
           Reset Filters
         </button>
       </div>
 
-      {/* Request cards */}
+      {/* Cards */}
       {requests.length > 0 ? (
         <div className="request-grid">
           {requests.map((request) => (
             <article className="request-card" key={request.id}>
               <div className="request-card-top">
-                <div className="request-icon">
-                  {request.icon}
-                </div>
-
+                <div className="request-icon">{request.icon}</div>
                 <div className="request-badges">
-                  <span
-                    className={`request-badge priority-${request.priority.toLowerCase()}`}
-                  >
+                  <span className={`badge badge-${request.priority.toLowerCase()}`}>
                     {request.priority}
                   </span>
-
-                  <span
-                    className={`request-status status-${request.status
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                  >
+                  <span className={`status-badge status-${request.status.toLowerCase().replace(/\s+/g, '')}`}>
                     {request.status}
                   </span>
                 </div>
               </div>
-
               <h3>{request.title}</h3>
-
               <p>{request.description}</p>
-
               <div className="request-card-bottom">
                 <span className="request-time">{request.time}</span>
-                <span>View Details →</span>
+                <a href="#" className="request-action">
+                  View Details →
+                </a>
               </div>
             </article>
           ))}
         </div>
       ) : (
         <div className="empty-state">
-          <strong>No requests found</strong>
-          <span>Try changing your search or filter options.</span>
-          <button
-            type="button"
-            className="secondary-button"
-            onClick={onReset}
-            style={{ marginTop: '16px' }}
-          >
+          <div className="icon">🔍</div>
+          <h3>No requests found</h3>
+          <p>Try changing your search or filter options.</p>
+          <button className="btn-secondary" onClick={onReset}>
             Clear Filters
           </button>
         </div>
