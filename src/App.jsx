@@ -19,6 +19,39 @@ function App() {
         <div className="ambient-glow glow-purple" />
         <div className="ambient-glow glow-blue" />
         <div className="grid-bg" />
+        
+        {/* ===== RAIN EFFECT ===== */}
+        <div className="rain" aria-hidden="true">
+          {Array.from({ length: 120 }, (_, index) => (
+            <span
+              key={index}
+              style={{
+                left: `${(index * 17) % 100}%`,
+                animationDelay: `${(index % 25) * 0.15}s`,
+                animationDuration: `${1.6 + (index % 10) * 0.2}s`,
+                height: `${50 + (index % 40)}px`,
+                opacity: `${0.2 + (index % 5) * 0.1}`,
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Dust Particles */}
+        <div className="dust" aria-hidden="true">
+          {Array.from({ length: 40 }, (_, index) => (
+            <i
+              key={index}
+              style={{
+                left: `${(index * 29) % 100}%`,
+                top: `${(index * 43) % 100}%`,
+                animationDelay: `${(index % 12) * 0.4}s`,
+                width: `${2 + (index % 3)}px`,
+                height: `${2 + (index % 3)}px`,
+              }}
+            />
+          ))}
+        </div>
+        
         <div className="cinematic-vignette" />
 
         {/* Content */}

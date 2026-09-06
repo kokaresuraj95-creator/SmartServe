@@ -1,6 +1,6 @@
 /* =========================================================
    SMARTSERVE — PREMIUM UI v2.0
-   Complete Design System
+   Complete Design System with Rain Effect
    ========================================================= */
 
 /* =========================================================
@@ -128,6 +128,90 @@
 @keyframes ambientPulse {
   0%, 100% { opacity: 0.3; transform: scale(1); }
   50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* =========================================================
+   RAIN EFFECT
+   ========================================================= */
+
+.rain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.35;
+}
+
+.rain span {
+  position: absolute;
+  top: -120px;
+  width: 1.5px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(148, 131, 255, 0.5),
+    rgba(124, 92, 252, 0.3),
+    transparent
+  );
+  animation: rainDrop linear infinite;
+  border-radius: 2px;
+}
+
+@keyframes rainDrop {
+  0% {
+    transform: translateY(-120px) rotate(5deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh + 120px)) rotate(5deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   DUST PARTICLES
+   ========================================================= */
+
+.dust {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dust i {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  animation: dustFloat 10s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(148, 131, 255, 0.1);
+}
+
+@keyframes dustFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.1;
+  }
+  25% {
+    transform: translate3d(15px, -20px, 0) scale(1.2);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(-10px, -35px, 0) scale(0.8);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate3d(20px, -15px, 0) scale(1.1);
+    opacity: 0.4;
+  }
 }
 
 /* =========================================================
@@ -1570,12 +1654,17 @@
   .grid-bg,
   .bg-orb,
   .ambient-glow,
+  .rain span,
+  .dust i,
   .chart-line,
-  .chartPulse,
   .float,
   .floating-card,
   .status-dot {
     animation: none !important;
+  }
+  
+  .rain {
+    opacity: 0.05 !important;
   }
   
   .dashboard-card,
