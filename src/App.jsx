@@ -20,20 +20,30 @@ function App() {
         <div className="ambient-glow glow-blue" />
         <div className="grid-bg" />
         
-        {/* ===== RAIN EFFECT ===== */}
+        {/* ===== LIVE RAIN EFFECT - FALLING FROM TOP TO BOTTOM ===== */}
         <div className="rain" aria-hidden="true">
-          {Array.from({ length: 120 }, (_, index) => (
-            <span
-              key={index}
-              style={{
-                left: `${(index * 17) % 100}%`,
-                animationDelay: `${(index % 25) * 0.15}s`,
-                animationDuration: `${1.6 + (index % 10) * 0.2}s`,
-                height: `${50 + (index % 40)}px`,
-                opacity: `${0.2 + (index % 5) * 0.1}`,
-              }}
-            />
-          ))}
+          {Array.from({ length: 180 }, (_, index) => {
+            const left = Math.random() * 100;
+            const delay = Math.random() * 3;
+            const duration = 1.2 + Math.random() * 1.5;
+            const height = 40 + Math.random() * 60;
+            const opacity = 0.2 + Math.random() * 0.3;
+            const width = 1 + Math.random() * 2;
+            
+            return (
+              <span
+                key={index}
+                style={{
+                  left: `${left}%`,
+                  animationDelay: `${delay}s`,
+                  animationDuration: `${duration}s`,
+                  height: `${height}px`,
+                  opacity: opacity,
+                  width: `${width}px`,
+                }}
+              />
+            );
+          })}
         </div>
         
         {/* Dust Particles */}

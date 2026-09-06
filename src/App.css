@@ -1,6 +1,6 @@
 /* =========================================================
    SMARTSERVE — PREMIUM UI v2.0
-   Complete Design System with Rain Effect
+   Complete Design System with LIVE Rain Effect
    ========================================================= */
 
 /* =========================================================
@@ -131,7 +131,7 @@
 }
 
 /* =========================================================
-   RAIN EFFECT
+   LIVE RAIN EFFECT - FALLING FROM TOP TO BOTTOM
    ========================================================= */
 
 .rain {
@@ -140,37 +140,37 @@
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.35;
+  opacity: 0.6;
 }
 
 .rain span {
   position: absolute;
-  top: -120px;
-  width: 1.5px;
+  top: -100px;
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(148, 131, 255, 0.5),
+    rgba(180, 160, 255, 0.6),
     rgba(124, 92, 252, 0.3),
     transparent
   );
-  animation: rainDrop linear infinite;
+  animation: rainFall linear infinite;
   border-radius: 2px;
+  transform: rotate(8deg);
 }
 
-@keyframes rainDrop {
+@keyframes rainFall {
   0% {
-    transform: translateY(-120px) rotate(5deg);
+    transform: translateY(-100px) rotate(8deg);
     opacity: 0;
   }
-  10% {
+  5% {
     opacity: 1;
   }
-  90% {
+  95% {
     opacity: 1;
   }
   100% {
-    transform: translateY(calc(100vh + 120px)) rotate(5deg);
+    transform: translateY(calc(100vh + 100px)) rotate(8deg);
     opacity: 0;
   }
 }
@@ -1607,6 +1607,11 @@
   .auth-card {
     padding: 28px 20px;
   }
+
+  /* Rain opacity on mobile */
+  .rain {
+    opacity: 0.3;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1643,6 +1648,11 @@
   
   .stat-card {
     padding: 14px 18px;
+  }
+
+  /* Rain opacity on mobile */
+  .rain {
+    opacity: 0.2;
   }
 }
 
