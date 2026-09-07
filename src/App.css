@@ -1,6 +1,6 @@
 /* =========================================================
-   SMARTSERVE — PREMIUM UI v2.0
-   Complete Design System with LIVE Rain Effect
+   SMARTSERVE — PREMIUM UI v3.0
+   Optimized Background + Advanced Animations
    ========================================================= */
 
 /* =========================================================
@@ -33,29 +33,73 @@
 }
 
 /* =========================================================
-   PREMIUM BACKGROUND
+   OPTIMIZED BACKGROUND SYSTEM
    ========================================================= */
 
+/* Base Background with Gradient */
+.app::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(124, 92, 252, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(74, 125, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(124, 92, 252, 0.04) 0%, transparent 40%),
+    #0a0815;
+  pointer-events: none;
+}
+
+/* Animated Gradient Background */
+.bg-gradient-animated {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: 
+    linear-gradient(
+      45deg,
+      rgba(124, 92, 252, 0.03),
+      rgba(74, 125, 255, 0.02),
+      rgba(124, 92, 252, 0.03)
+    );
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Grid Background - Optimized */
 .grid-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.3;
+  opacity: 0.25;
   background-image: 
-    linear-gradient(rgba(124, 92, 252, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 92, 252, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(124, 92, 252, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 92, 252, 0.06) 1px, transparent 1px);
   background-size: 60px 60px;
-  transform: perspective(800px) rotateX(65deg) scale(1.6);
+  transform: perspective(800px) rotateX(65deg) scale(1.8);
   transform-origin: center bottom;
-  animation: gridMove 20s linear infinite;
+  animation: gridMove 25s linear infinite;
 }
 
 @keyframes gridMove {
-  from { background-position: 0 0; }
-  to { background-position: 0 60px; }
+  0% { background-position: 0 0; }
+  100% { background-position: 0 60px; }
 }
+
+/* =========================================================
+   ADVANCED ORB ANIMATIONS
+   ========================================================= */
 
 .bg-orb {
   position: fixed;
@@ -64,40 +108,71 @@
   border-radius: 50%;
   filter: blur(120px);
   animation: orbFloat 15s ease-in-out infinite;
+  will-change: transform;
 }
 
 .orb-one {
-  width: 500px;
-  height: 500px;
-  top: -10%;
-  right: -5%;
-  background: rgba(124, 92, 252, 0.15);
+  width: 600px;
+  height: 600px;
+  top: -15%;
+  right: -10%;
+  background: rgba(124, 92, 252, 0.12);
+  animation-duration: 18s;
 }
 
 .orb-two {
-  width: 400px;
-  height: 400px;
-  bottom: -10%;
-  left: -5%;
-  background: rgba(74, 125, 255, 0.12);
-  animation-delay: -5s;
+  width: 500px;
+  height: 500px;
+  bottom: -15%;
+  left: -10%;
+  background: rgba(74, 125, 255, 0.10);
+  animation-delay: -6s;
+  animation-duration: 22s;
 }
 
 .orb-three {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(124, 92, 252, 0.08);
-  animation-delay: -10s;
+  background: rgba(124, 92, 252, 0.06);
+  animation-delay: -12s;
+  animation-duration: 25s;
+}
+
+.orb-four {
+  width: 350px;
+  height: 350px;
+  top: 20%;
+  left: 15%;
+  background: rgba(255, 107, 157, 0.04);
+  animation-delay: -4s;
+  animation-duration: 20s;
 }
 
 @keyframes orbFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -40px) scale(1.1); }
-  66% { transform: translate(-20px, 30px) scale(0.9); }
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  25% { 
+    transform: translate(40px, -50px) scale(1.1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translate(-30px, 40px) scale(0.9);
+    opacity: 0.5;
+  }
+  75% { 
+    transform: translate(20px, -30px) scale(1.05);
+    opacity: 0.7;
+  }
 }
+
+/* =========================================================
+   AMBIENT GLOW WITH PULSE
+   ========================================================= */
 
 .ambient-glow {
   position: fixed;
@@ -106,32 +181,52 @@
   border-radius: 50%;
   filter: blur(150px);
   animation: ambientPulse 8s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .glow-purple {
-  width: 400px;
-  height: 400px;
-  top: 20%;
-  right: 10%;
-  background: rgba(124, 92, 252, 0.08);
+  width: 500px;
+  height: 500px;
+  top: 15%;
+  right: 5%;
+  background: rgba(124, 92, 252, 0.06);
+  animation-duration: 10s;
 }
 
 .glow-blue {
-  width: 350px;
-  height: 350px;
-  bottom: 20%;
-  left: 10%;
-  background: rgba(74, 125, 255, 0.06);
+  width: 450px;
+  height: 450px;
+  bottom: 10%;
+  left: 5%;
+  background: rgba(74, 125, 255, 0.05);
   animation-delay: -4s;
+  animation-duration: 12s;
+}
+
+.glow-pink {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 107, 157, 0.04);
+  animation-delay: -2s;
+  animation-duration: 9s;
 }
 
 @keyframes ambientPulse {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.2); }
+  0%, 100% { 
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.3);
+  }
 }
 
 /* =========================================================
-   LIVE RAIN EFFECT - FALLING FROM TOP TO BOTTOM
+   ADVANCED RAIN EFFECT
    ========================================================= */
 
 .rain {
@@ -140,7 +235,8 @@
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.6;
+  opacity: 0.5;
+  will-change: transform;
 }
 
 .rain span {
@@ -148,19 +244,39 @@
   top: -100px;
   background: linear-gradient(
     to bottom,
-    transparent,
-    rgba(180, 160, 255, 0.6),
-    rgba(124, 92, 252, 0.3),
-    transparent
+    transparent 0%,
+    rgba(180, 160, 255, 0.5) 30%,
+    rgba(124, 92, 252, 0.4) 60%,
+    transparent 100%
   );
   animation: rainFall linear infinite;
   border-radius: 2px;
-  transform: rotate(8deg);
+  transform: rotate(6deg);
+  will-change: transform;
+  box-shadow: 0 0 6px rgba(124, 92, 252, 0.1);
+}
+
+/* Rain drop with glow */
+.rain span::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 15px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(124, 92, 252, 0.2),
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(4px);
 }
 
 @keyframes rainFall {
   0% {
-    transform: translateY(-100px) rotate(8deg);
+    transform: translateY(-100px) rotate(6deg) scale(1);
     opacity: 0;
   }
   5% {
@@ -170,13 +286,13 @@
     opacity: 1;
   }
   100% {
-    transform: translateY(calc(100vh + 100px)) rotate(8deg);
+    transform: translateY(calc(100vh + 100px)) rotate(6deg) scale(0.8);
     opacity: 0;
   }
 }
 
 /* =========================================================
-   DUST PARTICLES
+   DUST PARTICLES WITH 3D MOTION
    ========================================================= */
 
 .dust {
@@ -190,32 +306,99 @@
 .dust i {
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  animation: dustFloat 10s ease-in-out infinite;
-  box-shadow: 0 0 6px rgba(148, 131, 255, 0.1);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    rgba(124, 92, 252, 0.1)
+  );
+  animation: dustFloat 12s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(148, 131, 255, 0.05);
+  will-change: transform, opacity;
 }
 
 @keyframes dustFloat {
   0%, 100% {
     transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.1;
+    opacity: 0.05;
   }
-  25% {
-    transform: translate3d(15px, -20px, 0) scale(1.2);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate3d(-10px, -35px, 0) scale(0.8);
-    opacity: 0.8;
-  }
-  75% {
-    transform: translate3d(20px, -15px, 0) scale(1.1);
+  20% {
+    transform: translate3d(20px, -30px, 10px) scale(1.3);
     opacity: 0.4;
+  }
+  40% {
+    transform: translate3d(-15px, -50px, -10px) scale(0.7);
+    opacity: 0.7;
+  }
+  60% {
+    transform: translate3d(30px, -20px, 15px) scale(1.1);
+    opacity: 0.3;
+  }
+  80% {
+    transform: translate3d(-10px, -40px, -5px) scale(0.9);
+    opacity: 0.6;
   }
 }
 
 /* =========================================================
-   CINEMATIC VIGNETTE
+   SHOOTING STARS
+   ========================================================= */
+
+.shooting-stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px rgba(124, 92, 252, 0.3);
+  animation: shootingStar linear infinite;
+  will-change: transform, opacity;
+}
+
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    rgba(124, 92, 252, 0.4),
+    transparent
+  );
+  transform-origin: right center;
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translate(0, 0) rotate(-45deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+    transform: translate(-300px, 300px) rotate(-45deg);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   CINEMATIC VIGNETTE - OPTIMIZED
    ========================================================= */
 
 .cinematic-vignette {
@@ -225,10 +408,53 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at center,
-    transparent 40%,
-    rgba(10, 8, 21, 0.3) 70%,
-    rgba(10, 8, 21, 0.8) 100%
+    transparent 35%,
+    rgba(10, 8, 21, 0.2) 65%,
+    rgba(10, 8, 21, 0.7) 85%,
+    rgba(10, 8, 21, 0.95) 100%
   );
+}
+
+/* =========================================================
+   FLOATING PARTICLES BACKGROUND
+   ========================================================= */
+
+.floating-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(124, 92, 252, 0.2);
+  border-radius: 50%;
+  animation: particleFloat 20s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(124, 92, 252, 0.05);
+  will-change: transform;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.1;
+  }
+  25% {
+    transform: translate(50px, -80px) scale(1.5);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-30px, -150px) scale(0.7);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate(40px, -60px) scale(1.2);
+    opacity: 0.3;
+  }
 }
 
 /* =========================================================
@@ -284,6 +510,12 @@
   justify-content: center;
   font-size: 18px;
   box-shadow: 0 4px 15px rgba(124, 92, 252, 0.3);
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%, 100% { box-shadow: 0 4px 15px rgba(124, 92, 252, 0.3); }
+  50% { box-shadow: 0 4px 30px rgba(124, 92, 252, 0.6); }
 }
 
 .logo span {
@@ -357,6 +589,12 @@
   align-items: center;
   gap: 60px;
   padding: 60px 0 80px;
+  animation: heroFadeIn 1.2s ease-out;
+}
+
+@keyframes heroFadeIn {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .hero-badge {
@@ -372,6 +610,12 @@
   font-weight: 500;
   margin-bottom: 24px;
   backdrop-filter: blur(10px);
+  animation: badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { border-color: rgba(124, 92, 252, 0.2); }
+  50% { border-color: rgba(124, 92, 252, 0.5); }
 }
 
 .status-dot {
@@ -396,6 +640,12 @@
   background: linear-gradient(135deg, #fff 20%, var(--primary-light) 60%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: textShimmer 8s ease-in-out infinite;
+}
+
+@keyframes textShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .hero h1 .highlight {
@@ -433,6 +683,30 @@
   gap: 8px;
   text-decoration: none;
   box-shadow: 0 4px 20px rgba(124, 92, 252, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--primary), var(--accent), var(--primary));
+  background-size: 200% 200%;
+  border-radius: 14px;
+  z-index: -1;
+  animation: buttonGlow 3s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+@keyframes buttonGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .btn-primary:hover {
@@ -482,6 +756,16 @@
 .hero-stat {
   display: flex;
   flex-direction: column;
+  animation: statFadeIn 1s ease-out backwards;
+}
+
+.hero-stat:nth-child(1) { animation-delay: 0.2s; }
+.hero-stat:nth-child(2) { animation-delay: 0.4s; }
+.hero-stat:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes statFadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .hero-stat .number {
@@ -765,6 +1049,16 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  animation: cardFadeIn 0.8s ease-out backwards;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes cardFadeIn {
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .service-card::before {
@@ -799,7 +1093,7 @@
 }
 
 .service-card:hover .service-icon {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(5deg);
   background: rgba(124, 92, 252, 0.15);
 }
 
@@ -856,6 +1150,17 @@
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: var(--transition);
+  animation: statSlideIn 0.6s ease-out backwards;
+}
+
+.request-stat:nth-child(1) { animation-delay: 0.05s; }
+.request-stat:nth-child(2) { animation-delay: 0.1s; }
+.request-stat:nth-child(3) { animation-delay: 0.15s; }
+.request-stat:nth-child(4) { animation-delay: 0.2s; }
+
+@keyframes statSlideIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .request-stat:hover {
@@ -982,6 +1287,19 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: var(--transition);
   cursor: pointer;
+  animation: cardSlideIn 0.5s ease-out backwards;
+}
+
+.request-card:nth-child(1) { animation-delay: 0.05s; }
+.request-card:nth-child(2) { animation-delay: 0.1s; }
+.request-card:nth-child(3) { animation-delay: 0.15s; }
+.request-card:nth-child(4) { animation-delay: 0.2s; }
+.request-card:nth-child(5) { animation-delay: 0.25s; }
+.request-card:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes cardSlideIn {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 .request-card:hover {
@@ -1608,9 +1926,12 @@
     padding: 28px 20px;
   }
 
-  /* Rain opacity on mobile */
   .rain {
     opacity: 0.3;
+  }
+  
+  .bg-orb {
+    opacity: 0.5;
   }
 }
 
@@ -1650,7 +1971,6 @@
     padding: 14px 18px;
   }
 
-  /* Rain opacity on mobile */
   .rain {
     opacity: 0.2;
   }
@@ -1669,7 +1989,19 @@
   .chart-line,
   .float,
   .floating-card,
-  .status-dot {
+  .status-dot,
+  .shooting-star,
+  .particle,
+  .bg-gradient-animated,
+  .logo-icon,
+  .hero-badge,
+  .hero h1,
+  .btn-primary::before,
+  .request-card,
+  .service-card,
+  .stat-card,
+  .request-stat,
+  .hero-stat {
     animation: none !important;
   }
   
@@ -1684,5 +2016,12 @@
   .btn-secondary,
   .nav-button {
     transition: none !important;
+  }
+  
+  .request-card,
+  .service-card,
+  .hero-stat {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
