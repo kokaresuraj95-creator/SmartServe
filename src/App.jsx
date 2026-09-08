@@ -12,34 +12,27 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        {/* ===== OPTIMIZED BACKGROUND SYSTEM ===== */}
-        
-        {/* Animated Gradient Background */}
-        <div className="bg-gradient-animated" />
-        
-        {/* Grid Background */}
-        <div className="grid-bg" />
-        
-        {/* Advanced Orbs */}
+        {/* Background Orbs */}
         <div className="bg-orb orb-one" />
         <div className="bg-orb orb-two" />
         <div className="bg-orb orb-three" />
-        <div className="bg-orb orb-four" />
         
         {/* Ambient Glows */}
         <div className="ambient-glow glow-purple" />
         <div className="ambient-glow glow-blue" />
-        <div className="ambient-glow glow-pink" />
         
-        {/* ===== LIVE RAIN EFFECT ===== */}
+        {/* Grid */}
+        <div className="grid-bg" />
+        
+        {/* ===== LIVE RAIN — UPER SE NICHE ===== */}
         <div className="rain" aria-hidden="true">
-          {Array.from({ length: 200 }, (_, index) => {
+          {Array.from({ length: 180 }, (_, index) => {
             const left = Math.random() * 100;
-            const delay = Math.random() * 3.5;
-            const duration = 1.0 + Math.random() * 1.8;
-            const height = 50 + Math.random() * 70;
+            const delay = Math.random() * 3;
+            const duration = 1.2 + Math.random() * 1.5;
+            const height = 40 + Math.random() * 60;
             const opacity = 0.2 + Math.random() * 0.3;
-            const width = 1 + Math.random() * 2.5;
+            const width = 1 + Math.random() * 2;
             
             return (
               <span
@@ -57,41 +50,7 @@ function App() {
           })}
         </div>
         
-        {/* ===== SHOOTING STARS ===== */}
-        <div className="shooting-stars" aria-hidden="true">
-          {Array.from({ length: 6 }, (_, index) => (
-            <div
-              key={index}
-              className="shooting-star"
-              style={{
-                top: `${5 + Math.random() * 40}%`,
-                left: `${60 + Math.random() * 35}%`,
-                animationDelay: `${5 + Math.random() * 15}s`,
-                animationDuration: `${2 + Math.random() * 3}s`,
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* ===== FLOATING PARTICLES ===== */}
-        <div className="floating-particles" aria-hidden="true">
-          {Array.from({ length: 30 }, (_, index) => (
-            <div
-              key={index}
-              className="particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 20}s`,
-                animationDuration: `${15 + Math.random() * 20}s`,
-                width: `${2 + Math.random() * 4}px`,
-                height: `${2 + Math.random() * 4}px`,
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Dust Particles */}
+        {/* ===== LIVE DUST — MOVEMENT ===== */}
         <div className="dust" aria-hidden="true">
           {Array.from({ length: 50 }, (_, index) => (
             <i
@@ -99,7 +58,7 @@ function App() {
               style={{
                 left: `${(index * 29) % 100}%`,
                 top: `${(index * 43) % 100}%`,
-                animationDelay: `${(index % 15) * 0.4}s`,
+                animationDelay: `${(index % 12) * 0.4}s`,
                 width: `${2 + (index % 4)}px`,
                 height: `${2 + (index % 4)}px`,
               }}

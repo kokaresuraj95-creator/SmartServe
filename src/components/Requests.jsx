@@ -24,7 +24,6 @@ function Requests({
         </p>
       </div>
 
-      {/* Stats */}
       <div className="request-stats">
         <div className="request-stat">
           <span className="label">Total Requests</span>
@@ -44,7 +43,6 @@ function Requests({
         </div>
       </div>
 
-      {/* Toolbar */}
       <div className="request-toolbar">
         <div className="search-box">
           <span className="icon">⌕</span>
@@ -85,7 +83,6 @@ function Requests({
         </select>
       </div>
 
-      {/* Result Bar */}
       <div className="request-result-bar">
         <span className="request-count">
           Showing <strong>{requests.length}</strong> requests
@@ -95,7 +92,6 @@ function Requests({
         </button>
       </div>
 
-      {/* Cards */}
       {requests.length > 0 ? (
         <div className="request-grid">
           {requests.map((request) => (
