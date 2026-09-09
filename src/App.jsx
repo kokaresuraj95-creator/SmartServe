@@ -24,55 +24,44 @@ function App() {
         {/* Grid */}
         <div className="grid-bg" />
         
-        {/* ===== LIVE RAIN — UPER SE NICHE ===== */}
+        {/* Rain Effect */}
         <div className="rain" aria-hidden="true">
-          {Array.from({ length: 180 }, (_, index) => {
-            const left = Math.random() * 100;
-            const delay = Math.random() * 3;
-            const duration = 1.2 + Math.random() * 1.5;
-            const height = 40 + Math.random() * 60;
-            const opacity = 0.2 + Math.random() * 0.3;
-            const width = 1 + Math.random() * 2;
-            
-            return (
-              <span
-                key={index}
-                style={{
-                  left: `${left}%`,
-                  animationDelay: `${delay}s`,
-                  animationDuration: `${duration}s`,
-                  height: `${height}px`,
-                  opacity: opacity,
-                  width: `${width}px`,
-                }}
-              />
-            );
-          })}
-        </div>
-        
-        {/* ===== LIVE DUST — MOVEMENT ===== */}
-        <div className="dust" aria-hidden="true">
-          {Array.from({ length: 50 }, (_, index) => (
-            <i
-              key={index}
+          {Array.from({ length: 150 }, (_, i) => (
+            <span
+              key={i}
               style={{
-                left: `${(index * 29) % 100}%`,
-                top: `${(index * 43) % 100}%`,
-                animationDelay: `${(index % 12) * 0.4}s`,
-                width: `${2 + (index % 4)}px`,
-                height: `${2 + (index % 4)}px`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${1 + Math.random() * 1.5}s`,
+                height: `${40 + Math.random() * 60}px`,
+                opacity: 0.15 + Math.random() * 0.25,
+                width: `${1 + Math.random() * 2}px`,
               }}
             />
           ))}
         </div>
         
-        {/* Cinematic Vignette */}
+        {/* Dust Particles */}
+        <div className="dust" aria-hidden="true">
+          {Array.from({ length: 40 }, (_, i) => (
+            <i
+              key={i}
+              style={{
+                left: `${(i * 29) % 100}%`,
+                top: `${(i * 43) % 100}%`,
+                animationDelay: `${(i % 12) * 0.4}s`,
+                width: `${2 + (i % 4)}px`,
+                height: `${2 + (i % 4)}px`,
+              }}
+            />
+          ))}
+        </div>
+        
         <div className="cinematic-vignette" />
 
         {/* Content */}
         <div className="content-layer">
           <Navbar />
-          
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -80,7 +69,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
-          
           <Footer />
         </div>
       </div>

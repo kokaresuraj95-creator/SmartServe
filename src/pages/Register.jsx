@@ -22,7 +22,6 @@ function Register() {
       setError('Passwords do not match');
       return;
     }
-    // Mock registration - redirect to login
     navigate('/login');
   };
 
@@ -35,10 +34,8 @@ function Register() {
             <h2>Create Account</h2>
             <p>Start managing your service requests</p>
           </div>
-
           <form onSubmit={handleSubmit} className="auth-form">
             {error && <div className="auth-error">{error}</div>}
-
             <div className="form-group">
               <label htmlFor="name">Full Name</label>
               <input
@@ -51,7 +48,6 @@ function Register() {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
               <input
@@ -64,7 +60,6 @@ function Register() {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
@@ -77,7 +72,6 @@ function Register() {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="confirmPassword">Confirm Password</label>
               <input
@@ -90,12 +84,8 @@ function Register() {
                 required
               />
             </div>
-
-            <button type="submit" className="primary-button full-width">
-              Create Account
-            </button>
+            <button type="submit" className="btn-primary full-width">Create Account</button>
           </form>
-
           <div className="auth-footer">
             <span>Already have an account?</span>
             <Link to="/login">Sign In</Link>

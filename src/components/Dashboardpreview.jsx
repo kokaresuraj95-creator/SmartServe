@@ -8,21 +8,14 @@ function DashboardPreview() {
         </div>
         <div className="dashboard-menu">⋯</div>
       </div>
-
       <div className="chart-container">
         <div className="chart-grid" />
         <div className="chart-line" />
         <div className="chart-labels">
-          <span>Mon</span>
-          <span>Tue</span>
-          <span>Wed</span>
-          <span>Thu</span>
-          <span>Fri</span>
-          <span>Sat</span>
-          <span>Sun</span>
+          <span>Mon</span><span>Tue</span><span>Wed</span>
+          <span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
         </div>
       </div>
-
       <div className="dashboard-metrics">
         <div className="metric">
           <span className="value">1,284</span>
@@ -40,12 +33,10 @@ function DashboardPreview() {
           <span className="change negative">↓ 14.2%</span>
         </div>
       </div>
-
       <div className="floating-card floating-one">
         <div className="fc-label">Request Resolved</div>
         <div className="fc-value">Just now</div>
       </div>
-
       <div className="floating-card floating-two">
         <div className="fc-label">Fast Response</div>
         <div className="fc-value">92% efficiency</div>

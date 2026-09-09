@@ -11,21 +11,17 @@ export function useRequests() {
 
   const filteredRequests = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
-
     const result = requests.filter((request) => {
       const matchesSearch =
         !normalizedSearch ||
         request.title.toLowerCase().includes(normalizedSearch) ||
         request.description.toLowerCase().includes(normalizedSearch) ||
         request.category.toLowerCase().includes(normalizedSearch);
-
       const matchesStatus = status === "All" || request.status === status;
       const matchesCategory = category === "All" || request.category === category;
       const matchesPriority = priority === "All" || request.priority === priority;
-
       return matchesSearch && matchesStatus && matchesCategory && matchesPriority;
     });
-
     return [...result].sort((a, b) => {
       if (sort === "priority") {
         return priorityOrder[a.priority] - priorityOrder[b.priority];

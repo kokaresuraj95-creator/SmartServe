@@ -53,14 +53,12 @@ function Requests({
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-
         <select value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="All">All Status</option>
           <option value="Pending">Pending</option>
           <option value="In Progress">In Progress</option>
           <option value="Resolved">Resolved</option>
         </select>
-
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="All">All Categories</option>
           <option value="Technical">Technical</option>
@@ -69,14 +67,12 @@ function Requests({
           <option value="Software">Software</option>
           <option value="Maintenance">Maintenance</option>
         </select>
-
         <select value={priority} onChange={(e) => setPriority(e.target.value)}>
           <option value="All">All Priority</option>
           <option value="High">High</option>
           <option value="Medium">Medium</option>
           <option value="Low">Low</option>
         </select>
-
         <select value={sort} onChange={(e) => setSort(e.target.value)}>
           <option value="newest">Newest</option>
           <option value="priority">Priority</option>
@@ -84,12 +80,8 @@ function Requests({
       </div>
 
       <div className="request-result-bar">
-        <span className="request-count">
-          Showing <strong>{requests.length}</strong> requests
-        </span>
-        <button className="reset-btn" onClick={onReset}>
-          Reset Filters
-        </button>
+        <span className="request-count">Showing <strong>{requests.length}</strong> requests</span>
+        <button className="reset-btn" onClick={onReset}>Reset Filters</button>
       </div>
 
       {requests.length > 0 ? (
@@ -99,21 +91,15 @@ function Requests({
               <div className="request-card-top">
                 <div className="request-icon">{request.icon}</div>
                 <div className="request-badges">
-                  <span className={`badge badge-${request.priority.toLowerCase()}`}>
-                    {request.priority}
-                  </span>
-                  <span className={`status-badge status-${request.status.toLowerCase().replace(/\s+/g, '')}`}>
-                    {request.status}
-                  </span>
+                  <span className={`badge badge-${request.priority.toLowerCase()}`}>{request.priority}</span>
+                  <span className={`status-badge status-${request.status.toLowerCase().replace(/\s+/g, '')}`}>{request.status}</span>
                 </div>
               </div>
               <h3>{request.title}</h3>
               <p>{request.description}</p>
               <div className="request-card-bottom">
                 <span className="request-time">{request.time}</span>
-                <a href="#" className="request-action">
-                  View Details →
-                </a>
+                <a href="#" className="request-action">View Details →</a>
               </div>
             </article>
           ))}
@@ -123,9 +109,7 @@ function Requests({
           <div className="icon">🔍</div>
           <h3>No requests found</h3>
           <p>Try changing your search or filter options.</p>
-          <button className="btn-secondary" onClick={onReset}>
-            Clear Filters
-          </button>
+          <button className="btn-secondary" onClick={onReset}>Clear Filters</button>
         </div>
       )}
     </section>

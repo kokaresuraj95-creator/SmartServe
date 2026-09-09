@@ -7,22 +7,19 @@ function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
-        <div className="logo-icon">S</div>
+        <span className="logo-icon">✦</span>
         <span>SmartServe</span>
       </Link>
 
       {!isAuthPage && (
         <>
           <div className="nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/dashboard">Dashboard</Link>
-            <Link to="/requests/new">New Request</Link>
+            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+            <Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''}>Dashboard</Link>
+            <Link to="/requests/new" className={location.pathname === '/requests/new' ? 'active' : ''}>New Request</Link>
           </div>
-
           <div className="nav-actions">
-            <Link to="/login" className="nav-button">
-              Sign In
-            </Link>
+            <Link to="/login" className="nav-button">Sign In</Link>
           </div>
         </>
       )}

@@ -3,10 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -20,7 +17,6 @@ function Login() {
       setError('Please fill in all fields');
       return;
     }
-    // Mock login - redirect to dashboard
     navigate('/dashboard');
   };
 
@@ -33,10 +29,8 @@ function Login() {
             <h2>Welcome Back</h2>
             <p>Sign in to manage your service requests</p>
           </div>
-
           <form onSubmit={handleSubmit} className="auth-form">
             {error && <div className="auth-error">{error}</div>}
-
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
               <input
@@ -49,7 +43,6 @@ function Login() {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
@@ -62,12 +55,8 @@ function Login() {
                 required
               />
             </div>
-
-            <button type="submit" className="primary-button full-width">
-              Sign In
-            </button>
+            <button type="submit" className="btn-primary full-width">Sign In</button>
           </form>
-
           <div className="auth-footer">
             <span>Don't have an account?</span>
             <Link to="/register">Sign Up</Link>

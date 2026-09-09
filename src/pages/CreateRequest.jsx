@@ -39,7 +39,7 @@ function CreateRequest() {
           <div className="success-icon">✅</div>
           <h2>Request Created!</h2>
           <p>Your request has been submitted successfully.</p>
-          <button onClick={() => navigate('/dashboard')} className="primary-button">
+          <button onClick={() => navigate('/dashboard')} className="btn-primary">
             Go to Dashboard
           </button>
         </div>
@@ -54,7 +54,6 @@ function CreateRequest() {
           <h1>Create New Request</h1>
           <p>Fill in the details below to submit a new service request.</p>
         </div>
-
         <form onSubmit={handleSubmit} className="create-request-form">
           <div className="form-group">
             <label htmlFor="title">Request Title</label>
@@ -68,7 +67,6 @@ function CreateRequest() {
               required
             />
           </div>
-
           <div className="form-group">
             <label htmlFor="category">Category</label>
             <select
@@ -85,7 +83,6 @@ function CreateRequest() {
               <option value="Maintenance">Maintenance</option>
             </select>
           </div>
-
           <div className="form-group">
             <label htmlFor="priority">Priority</label>
             <select
@@ -100,7 +97,6 @@ function CreateRequest() {
               <option value="Low">Low</option>
             </select>
           </div>
-
           <div className="form-group">
             <label htmlFor="description">Description</label>
             <textarea
@@ -113,12 +109,11 @@ function CreateRequest() {
               required
             />
           </div>
-
           <div className="form-actions">
-            <button type="button" onClick={() => navigate('/dashboard')} className="secondary-button">
+            <button type="button" onClick={() => navigate('/dashboard')} className="btn-secondary">
               Cancel
             </button>
-            <button type="submit" className="primary-button">
+            <button type="submit" className="btn-primary">
               Submit Request
             </button>
           </div>

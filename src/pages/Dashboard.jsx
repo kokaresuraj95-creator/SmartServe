@@ -12,12 +12,9 @@ function Dashboard() {
           <h1>Dashboard</h1>
           <p>Welcome back! Here's what's happening with your requests.</p>
         </div>
-        <Link to="/requests/new" className="primary-button">
-          + New Request
-        </Link>
+        <Link to="/requests/new" className="btn-primary">+ New Request</Link>
       </div>
 
-      {/* Stats Grid */}
       <div className="dashboard-stats-grid">
         <div className="stat-card">
           <div className="stat-icon">📊</div>
@@ -49,9 +46,8 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Recent Requests */}
       <div className="recent-requests">
-        <div className="section-header">
+        <div className="section-header-custom">
           <h2>Recent Requests</h2>
           <Link to="/requests" className="view-all">View All →</Link>
         </div>
@@ -62,12 +58,8 @@ function Dashboard() {
                 <div className="request-card-top">
                   <div className="request-icon">{request.icon}</div>
                   <div className="request-badges">
-                    <span className={`request-badge priority-${request.priority.toLowerCase()}`}>
-                      {request.priority}
-                    </span>
-                    <span className={`request-status status-${request.status.toLowerCase().replace(/\s+/g, '-')}`}>
-                      {request.status}
-                    </span>
+                    <span className={`badge badge-${request.priority.toLowerCase()}`}>{request.priority}</span>
+                    <span className={`status-badge status-${request.status.toLowerCase().replace(/\s+/g, '')}`}>{request.status}</span>
                   </div>
                 </div>
                 <h3>{request.title}</h3>

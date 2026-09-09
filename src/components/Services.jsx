@@ -9,7 +9,6 @@ function Services({ services }) {
           SmartServe keeps your entire service workflow organized.
         </p>
       </div>
-
       <div className="services-grid">
         {services.map((service) => (
           <article className="service-card" key={service.title}>

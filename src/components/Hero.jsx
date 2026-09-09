@@ -6,28 +6,23 @@ function Hero({ stats }) {
           <span className="status-dot" />
           Smart service management platform
         </div>
-
         <h1>
           Manage every service
           <br />
           <span className="highlight">smarter & faster.</span>
         </h1>
-
         <p>
           SmartServe brings service requests, team collaboration,
           tracking and management into one intelligent platform.
         </p>
-
         <div className="hero-actions">
           <a href="#requests" className="btn-primary">
-            Create Request
-            <span className="btn-arrow">→</span>
+            Create Request <span className="btn-arrow">→</span>
           </a>
           <a href="#services" className="btn-secondary">
             Explore Services
           </a>
         </div>
-
         <div className="hero-stats">
           {stats.map((stat) => (
             <div className="hero-stat" key={stat.label}>
@@ -37,10 +32,7 @@ function Hero({ stats }) {
           ))}
         </div>
       </div>
-
-      <div className="hero-visual">
-        {/* DashboardPreview will render here */}
-      </div>
+      <div className="hero-visual" />
     </section>
   );
 }
