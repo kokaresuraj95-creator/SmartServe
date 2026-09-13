@@ -1215,12 +1215,3 @@ body {
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
-@media (prefers-reduced-motion: reduce) {
-  .grid-bg, .bg-orb, .rain span, .dust i, .chart-line, .float, .floating-card, .status-dot {
-    animation: none !important;
-  }
-  .rain { opacity: 0.03 !important; }
-  .dashboard-card, .service-card, .request-card, .btn-primary, .btn-secondary, .nav-button {
-    transition: none !important;
-  }
-}
