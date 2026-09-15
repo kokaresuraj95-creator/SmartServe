@@ -1200,18 +1200,3 @@ body {
 }
 
 @media (max-width: 480px) {
-  .hero h1 { font-size: 30px; }
-  .hero-stats { gap: 24px; flex-wrap: wrap; }
-  .hero-stat .number { font-size: 22px; }
-  .request-stats { grid-template-columns: 1fr; }
-  .btn-primary, .btn-secondary { 
-    width: 100%; 
-    justify-content: center; 
-  }
-  .hero-actions { flex-direction: column; }
-  .rain { opacity: 0.1; }
-}
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
