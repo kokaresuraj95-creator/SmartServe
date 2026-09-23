@@ -1193,4 +1193,4 @@ body {
   .request-grid { grid-template-columns: 1fr; }
   .request-stats { grid-template-columns: 1fr 1fr; }
   .request-toolbar { grid-template-columns: 1fr; }
-  .dashboard-metrics { grid-template-columns:
+  .dashboard-metrics { grid-template-column
