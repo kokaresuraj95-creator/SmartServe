@@ -23,7 +23,7 @@ function LandingPage() {
   } = useRequests();
 
   return (
-    <main>
+    <main className="landing-page">
       <Hero stats={stats} />
       <DashboardPreview />
       <Services services={services} />
