@@ -305,6 +305,27 @@ body {
   gap: 10px;
 }
 
+.workspace-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.workspace-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.75);
+  animation: pulse 2s ease-in-out infinite;
+}
+
 .nav-button {
   padding: 9px 20px;
   border-radius: 12px;
@@ -1421,6 +1442,7 @@ body {
     width: calc(100% - 24px); 
   }
   .nav-links { display: none; }
+  .workspace-status { display: none; }
   .hero { padding: 40px 0 60px; }
   .hero h1 { font-size: 38px; }
   .services-grid { grid-template-columns: 1fr; }

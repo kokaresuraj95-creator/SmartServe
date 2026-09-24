@@ -19,6 +19,10 @@ function Navbar() {
             <Link to="/requests/new" className={location.pathname === '/requests/new' ? 'active' : ''}>New Request</Link>
           </div>
           <div className="nav-actions">
+            <span className="workspace-status">
+              <span className="workspace-status-dot" />
+              Live workspace
+            </span>
             <Link to="/login" className="nav-button">Sign In</Link>
           </div>
         </>
