@@ -1,4 +1,10 @@
 function DashboardPreview() {
+  const metrics = [
+    { value: '1,284', label: 'Total Requests', change: '↑ 12.8%', tone: 'positive' },
+    { value: '982', label: 'Resolved', change: '↑ 8.4%', tone: 'positive' },
+    { value: '18m', label: 'Response Time', change: '↓ 14.2%', tone: 'negative' },
+  ];
+
   return (
     <div className="dashboard-card">
       <div className="dashboard-header">
@@ -6,7 +12,9 @@ function DashboardPreview() {
           <h3>Service Overview</h3>
           <span>Request Activity</span>
         </div>
-        <div className="dashboard-menu">⋯</div>
+        <button className="dashboard-menu" type="button" aria-label="Open dashboard options">
+          ⋯
+        </button>
       </div>
       <div className="chart-container">
         <div className="chart-grid" />
@@ -17,21 +25,13 @@ function DashboardPreview() {
         </div>
       </div>
       <div className="dashboard-metrics">
-        <div className="metric">
-          <span className="value">1,284</span>
-          <span className="label">Total Requests</span>
-          <span className="change positive">↑ 12.8%</span>
-        </div>
-        <div className="metric">
-          <span className="value">982</span>
-          <span className="label">Resolved</span>
-          <span className="change positive">↑ 8.4%</span>
-        </div>
-        <div className="metric">
-          <span className="value">18m</span>
-          <span className="label">Response Time</span>
-          <span className="change negative">↓ 14.2%</span>
-        </div>
+        {metrics.map((metric) => (
+          <div className="metric" key={metric.label}>
+            <span className="value">{metric.value}</span>
+            <span className="label">{metric.label}</span>
+            <span className={`change ${metric.tone}`}>{metric.change}</span>
+          </div>
+        ))}
       </div>
       <div className="floating-card floating-one">
         <div className="fc-label">Request Resolved</div>
