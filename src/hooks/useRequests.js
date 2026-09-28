@@ -1,13 +1,36 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { initialRequests, priorityOrder } from '../data/mockData';
 
+const REQUESTS_STORAGE_KEY = 'smartserve-requests';
+
+function loadRequests() {
+  try {
+    const savedRequests = window.localStorage.getItem(REQUESTS_STORAGE_KEY);
+    if (savedRequests) {
+      const parsedRequests = JSON.parse(savedRequests);
+      if (Array.isArray(parsedRequests)) return parsedRequests;
+    }
+  } catch {
+    return initialRequests;
+  }
+  return initialRequests;
+}
+
 export function useRequests() {
-  const [requests, setRequests] = useState(initialRequests);
+  const [requests, setRequests] = useState(loadRequests);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("All");
   const [category, setCategory] = useState("All");
   const [priority, setPriority] = useState("All");
   const [sort, setSort] = useState("newest");
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(REQUESTS_STORAGE_KEY, JSON.stringify(requests));
+    } catch {
+      // Keep requests usable when browser storage is unavailable.
+    }
+  }, [requests]);
 
   const filteredRequests = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
