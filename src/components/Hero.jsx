@@ -1,3 +1,7 @@
+import { lazy, Suspense } from 'react';
+
+const HeroScene = lazy(() => import('./HeroScene'));
+
 function Hero({ stats }) {
   return (
     <section className="hero" id="home">
@@ -33,51 +37,11 @@ function Hero({ stats }) {
         </div>
       </div>
 
-      <div className="hero-visual" aria-label="3D dashboard preview">
-        <div className="visual-scene">
-          <div className="visual-panel upper-panel">
-            <div className="panel-header">
-              <span className="panel-dot dot-one" />
-              <span className="panel-dot dot-two" />
-              <span className="panel-dot dot-three" />
-            </div>
-            <div className="panel-body">
-              <div className="mini-chart">
-                <span className="chart-bar bar-one" />
-                <span className="chart-bar bar-two" />
-                <span className="chart-bar bar-three" />
-                <span className="chart-bar bar-four" />
-                <span className="chart-bar bar-five" />
-                <span className="chart-bar bar-six" />
-              </div>
-              <div className="mini-metrics">
-                <div>
-                  <strong>1.2k</strong>
-                  <small>Requests</small>
-                </div>
-                <div>
-                  <strong>96%</strong>
-                  <small>Delivery</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="visual-panel lower-panel">
-            <div className="panel-body compact">
-              <div className="status-row">
-                <span className="status-pill success">Resolved</span>
-                <span className="status-pill neutral">Live</span>
-              </div>
-              <div className="progress-wrap">
-                <span className="progress-label">Team output</span>
-                <div className="progress-track">
-                  <span className="progress-fill" />
-                </div>
-              </div>
-            </div>
-          </div>
-
+      <div className="hero-visual" aria-label="Interactive 3D service dashboard">
+        <Suspense fallback={<div className="hero-canvas-fallback" aria-hidden="true" />}>
+          <HeroScene />
+        </Suspense>
+        <div className="visual-scene" aria-hidden="true">
           <div className="floating-mini mini-left">
             <span>Queue</span>
             <strong>14 pending</strong>
