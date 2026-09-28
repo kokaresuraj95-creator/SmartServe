@@ -5,12 +5,14 @@ import { MathUtils } from 'three';
 
 function FloatingServiceCore() {
   const coreRef = useRef(null);
+  const autoRotation = useRef(0);
 
   useFrame(({ pointer, size }, delta) => {
     if (!coreRef.current) return;
 
     const core = coreRef.current;
-    core.rotation.y = MathUtils.damp(core.rotation.y, pointer.x * 0.34, 3.5, delta);
+    autoRotation.current += delta * 0.16;
+    core.rotation.y = MathUtils.damp(core.rotation.y, autoRotation.current + pointer.x * 0.34, 3.5, delta);
     core.rotation.x = MathUtils.damp(core.rotation.x, -pointer.y * 0.24, 3.5, delta);
     core.scale.setScalar(size.width < 480 ? 0.78 : 1);
   });
