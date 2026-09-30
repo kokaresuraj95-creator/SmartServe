@@ -1,3 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
+import { X } from 'lucide-react';
+
 function Requests({
   requests,
   counts,
@@ -13,6 +16,15 @@ function Requests({
   setSort,
   onReset,
 }) {
+  const [selectedRequest, setSelectedRequest] = useState(null);
+  const detailsDialogRef = useRef(null);
+
+  useEffect(() => {
+    if (selectedRequest && !detailsDialogRef.current?.open) {
+      detailsDialogRef.current?.showModal();
+    }
+  }, [selectedRequest]);
+
   return (
     <section className="requests-section" id="requests">
       <div className="section-header" style={{ textAlign: 'left', margin: '0 0 40px' }}>
@@ -99,7 +111,14 @@ function Requests({
               <p>{request.description}</p>
               <div className="request-card-bottom">
                 <span className="request-time">{request.time}</span>
-                <a href="#" className="request-action">View Details →</a>
+                  <button
+                    type="button"
+                    className="request-action"
+                    aria-haspopup="dialog"
+                    onClick={() => setSelectedRequest(request)}
+                  >
+                    View Details <span aria-hidden="true">→</span>
+                  </button>
               </div>
             </article>
           ))}
@@ -112,6 +131,37 @@ function Requests({
           <button className="btn-secondary" onClick={onReset}>Clear Filters</button>
         </div>
       )}
+
+      <dialog
+        ref={detailsDialogRef}
+        className="request-dialog"
+        onClose={() => setSelectedRequest(null)}
+        aria-labelledby="request-dialog-title"
+      >
+        {selectedRequest && (
+          <div className="request-dialog-content">
+            <div className="request-dialog-heading">
+              <div className="request-icon" aria-hidden="true">{selectedRequest.icon}</div>
+              <button
+                type="button"
+                className="request-dialog-close"
+                aria-label="Close request details"
+                onClick={() => detailsDialogRef.current?.close()}
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            </div>
+            <h2 id="request-dialog-title">{selectedRequest.title}</h2>
+            <p className="request-dialog-description">{selectedRequest.description}</p>
+            <dl className="request-dialog-details">
+              <div><dt>Category</dt><dd>{selectedRequest.category}</dd></div>
+              <div><dt>Priority</dt><dd>{selectedRequest.priority}</dd></div>
+              <div><dt>Status</dt><dd>{selectedRequest.status}</dd></div>
+              <div><dt>Submitted</dt><dd>{selectedRequest.time}</dd></div>
+            </dl>
+          </div>
+        )}
+      </dialog>
     </section>
   );
 }
