@@ -35,7 +35,9 @@ function App() {
         
         {/* Rain Effect */}
         <div className="rain" aria-hidden="true">
-          {rainDrops.map((style, i) => (\n            <span key={i} style={style} />\n          ))}
+          {rainDrops.map((style, i) => (
+            <span key={i} style={style} />
+          ))}
         </div>
         
         {/* Dust Particles */}
