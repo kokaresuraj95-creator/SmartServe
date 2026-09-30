@@ -1359,12 +1359,114 @@ body {
   color: var(--text-secondary); 
   font-size: 12px; 
   font-weight: 500;
-  text-decoration: none; 
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
   transition: var(--transition); 
 }
 
 .request-action:hover { 
   color: var(--primary-light); 
+}
+
+.request-dialog {
+  width: min(520px, calc(100% - 32px));
+  max-height: min(80vh, 620px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+}
+
+.request-dialog::backdrop {
+  background: rgba(3, 7, 18, 0.72);
+  backdrop-filter: blur(5px);
+}
+
+.request-dialog-content {
+  padding: 28px;
+}
+
+.request-dialog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.request-dialog-close {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.request-dialog-close:hover {
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.request-dialog h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.request-dialog-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.request-dialog-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.request-dialog-details div {
+  min-width: 0;
+  padding: 12px;
+  background: rgba(148, 163, 184, 0.06);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+.request-dialog-details dt {
+  margin-bottom: 5px;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.request-dialog-details dd {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .request-dialog-content {
+    padding: 20px;
+  }
+
+  .request-dialog-details {
+    grid-template-columns: 1fr;
+  }
 }
 
 .empty-state {
