@@ -1459,6 +1459,46 @@ body {
   overflow-wrap: anywhere;
 }
 
+.request-dialog-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.request-dialog-id {
+  color: var(--text-muted);
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+}
+
+.request-dialog-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 0 11px;
+  color: var(--text-primary);
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.request-dialog-copy:hover {
+  border-color: var(--border-hover);
+}
+
+.request-dialog-copy-status {
+  flex-basis: 100%;
+  min-height: 16px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
 @media (max-width: 480px) {
   .request-dialog-content {
     padding: 20px;

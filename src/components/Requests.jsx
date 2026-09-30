@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { Copy, X } from 'lucide-react';
 
 function Requests({
   requests,
@@ -17,7 +17,19 @@ function Requests({
   onReset,
 }) {
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const [copyStatus, setCopyStatus] = useState('');
   const detailsDialogRef = useRef(null);
+
+  const handleCopyRequestId = async () => {
+    const requestId = `SR-${String(selectedRequest.id).padStart(4, '0')}`;
+
+    try {
+      await navigator.clipboard.writeText(requestId);
+      setCopyStatus('Request ID copied');
+    } catch {
+      setCopyStatus('Unable to copy request ID');
+    }
+  };
 
   useEffect(() => {
     if (selectedRequest && !detailsDialogRef.current?.open) {
@@ -115,7 +127,10 @@ function Requests({
                     type="button"
                     className="request-action"
                     aria-haspopup="dialog"
-                    onClick={() => setSelectedRequest(request)}
+                    onClick={() => {
+                      setCopyStatus('');
+                      setSelectedRequest(request);
+                    }}
                   >
                     View Details <span aria-hidden="true">→</span>
                   </button>
@@ -135,7 +150,10 @@ function Requests({
       <dialog
         ref={detailsDialogRef}
         className="request-dialog"
-        onClose={() => setSelectedRequest(null)}
+        onClose={() => {
+          setSelectedRequest(null);
+          setCopyStatus('');
+        }}
         aria-labelledby="request-dialog-title"
       >
         {selectedRequest && (
@@ -159,6 +177,22 @@ function Requests({
               <div><dt>Status</dt><dd>{selectedRequest.status}</dd></div>
               <div><dt>Submitted</dt><dd>{selectedRequest.time}</dd></div>
             </dl>
+            <div className="request-dialog-footer">
+              <span className="request-dialog-id">
+                SR-{String(selectedRequest.id).padStart(4, '0')}
+              </span>
+              <button
+                type="button"
+                className="request-dialog-copy"
+                onClick={handleCopyRequestId}
+              >
+                <Copy size={15} aria-hidden="true" />
+                Copy ID
+              </button>
+              <span className="request-dialog-copy-status" role="status" aria-live="polite">
+                {copyStatus}
+              </span>
+            </div>
           </div>
         )}
       </dialog>

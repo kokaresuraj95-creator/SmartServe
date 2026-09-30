@@ -1,5 +1,5 @@
 import Hero from '../components/Hero';
-import DashboardPreview from '../components/DashboardPreview';
+import DashboardPreview from '../components/Dashboardpreview';
 import Services from '../components/Services';
 import Requests from '../components/Requests';
 import { stats, services } from '../data/mockData';
@@ -46,4 +46,4 @@ function LandingPage() {
   );
 }
 
-export default Landingpage;
+export default LandingPage;
