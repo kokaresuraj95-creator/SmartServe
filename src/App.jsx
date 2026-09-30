@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -10,6 +9,15 @@ import Register from './pages/Register';
 import CreateRequest from './pages/CreateRequest';
 
 function App() {
+  const rainDrops = Array.from({ length: 150 }, (_, i) => ({
+    left: `${(i * 37) % 100}%`,
+    animationDelay: `${(i * 17) % 30 / 10}s`,
+    animationDuration: `${1 + (i * 13) % 15 / 10}s`,
+    height: `${40 + (i * 19) % 60}px`,
+    opacity: 0.15 + (i % 5) * 0.05,
+    width: `${1 + i % 2}px`,
+  }));
+
   return (
     <BrowserRouter>
       <div className="app">
@@ -27,19 +35,7 @@ function App() {
         
         {/* Rain Effect */}
         <div className="rain" aria-hidden="true">
-          {Array.from({ length: 150 }, (_, i) => (
-            <span
-              key={i}
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${1 + Math.random() * 1.5}s`,
-                height: `${40 + Math.random() * 60}px`,
-                opacity: 0.15 + Math.random() * 0.25,
-                width: `${1 + Math.random() * 2}px`,
-              }}
-            />
-          ))}
+          {rainDrops.map((style, i) => (\n            <span key={i} style={style} />\n          ))}
         </div>
         
         {/* Dust Particles */}
