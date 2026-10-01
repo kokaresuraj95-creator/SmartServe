@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { Link } from 'react-router-dom';
 
 const HeroScene = lazy(() => import('./HeroScene'));
 
@@ -20,9 +21,9 @@ function Hero({ stats }) {
           tracking and management into one intelligent platform.
         </p>
         <div className="hero-actions">
-          <a href="#requests" className="btn-primary">
+          <Link to="/requests/new" className="btn-primary">
             Create Request <span className="btn-arrow">→</span>
-          </a>
+          </Link>
           <a href="#services" className="btn-secondary">
             Explore Services
           </a>
