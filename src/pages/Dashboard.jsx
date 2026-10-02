@@ -6,7 +6,7 @@ function Dashboard() {
   const recentRequests = requests.slice(0, 4);
 
   return (
-    <div className="dashboard-page">
+    <div className="dashboard-Page">
       <div className="dashboard-header">
         <div>
           <h1>Dashboard</h1>
