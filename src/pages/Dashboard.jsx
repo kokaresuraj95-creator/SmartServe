@@ -15,7 +15,7 @@ function Dashboard() {
         <Link to="/requests/new" className="btn-primary">+ New Request</Link>
       </div>
 
-      <div className=stats-grid">
+      <div className="dashboard-stats-grid">
         <div className="stat-card">
           <div className="stat-icon">📊</div>
           <div>
