@@ -4,9 +4,15 @@ import { useRequests } from '../hooks/useRequests';
 function Dashboard() {
   const { requests, requestCounts } = useRequests();
   const recentRequests = requests.slice(0, 4);
+  const urgentRequests = requests
+    .filter((request) => request.priority === 'High' && request.status !== 'Resolved')
+    .slice(0, 3);
+  const completionRate = requestCounts.total
+    ? Math.round((requestCounts.resolved / requestCounts.total) * 100)
+    : 0;
 
   return (
-    <div className="dashboard">
+    <div className="dashboard-page">
       <div className="dashboard-header">
         <div>
           <h1>Dashboard</h1>
@@ -46,6 +52,33 @@ function Dashboard() {
         </div>
       </div>
 
+      <div className="dashboard-insights">
+        <div className="insight-card insight-highlight">
+          <span className="insight-label">Resolution rate</span>
+          <strong>{completionRate}%</strong>
+          <p>{requestCounts.resolved} of {requestCounts.total} requests are completed.</p>
+        </div>
+
+        <div className="insight-card">
+          <span className="insight-label">Priority queue</span>
+          {urgentRequests.length > 0 ? (
+            <ul className="priority-queue">
+              {urgentRequests.map((request) => (
+                <li key={request.id}>
+                  <span className="priority-dot" aria-hidden="true" />
+                  <div>
+                    <strong>{request.title}</strong>
+                    <small>{request.category}</small>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="insight-empty">All clear — no urgent requests right now.</p>
+          )}
+        </div>
+      </div>
+
       <div className="recent-requests">
         <div className="section-header-custom">
           <h2>Recent Requests</h2>
@@ -77,4 +110,4 @@ function Dashboard() {
   );
 }
 
-export default ;
+export default Dashboard;
