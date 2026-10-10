@@ -15,7 +15,7 @@ function Dashboard() {
     <div className="dashboard-page">
       <div className="dashboard-header">
         <div>
-          <h1>Dashboard</h1>
+          <h1>DASHBOARD</h1>
           <p>Welcome back! Here's what's happening with your requests.</p>
         </div>
         <Link to="/requests/new" className="btn-primary">+ New Request</Link>
