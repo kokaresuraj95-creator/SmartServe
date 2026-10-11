@@ -52,7 +52,7 @@ function Dashboard() {
         </div>
       </div>
 
-      <div className="dashboard-insights">
+      <div className="dashBoard-insights">
         <div className="insight-card insight-highlight">
           <span className="insight-label">Resolution rate</span>
           <strong>{completionRate}%</strong>
